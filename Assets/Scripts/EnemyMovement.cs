@@ -11,18 +11,27 @@ public class EnemyMovement : MonoBehaviour
     public WorldScript worldScript;
     Vector2 movement;
 
+    public bool enableFlag = false;
+
     // Update is called once per frame
+
+    void Start()
+    {
+        worldScript.addEnemy(this);
+    }
     
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
     }
 
     void FixedUpdate()
     {
-        rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(enableFlag)
+        {
+            rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -34,5 +43,13 @@ public class EnemyMovement : MonoBehaviour
             worldScript.load("MainMenu");
             
         }
+    }
+
+    private void OnMouseUp() 
+    {
+        Debug.Log("I want control");
+        worldScript.disableEnemies();
+        enableFlag = true;
+
     }
 }

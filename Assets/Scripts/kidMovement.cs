@@ -10,7 +10,7 @@ public class kidMovement : MonoBehaviour
 
     Vector2 movement;
 
-    flag True;
+    bool flag = true;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -54,9 +54,9 @@ public class kidMovement : MonoBehaviour
 
     private void initialMovement(){
 
-		Vector2 startPosition
+		/*Vector2 startPosition
 
-		transform.
+		transform.*/
 
     }
 
