@@ -10,7 +10,7 @@ public class DoorBehaviour : MonoBehaviour
         if(collider.name.Equals("Player"))
         {
             Debug.Log("Game is done");
-            worldScript.ping();
+            worldScript.load("MainMenu");
         }
     }
 }

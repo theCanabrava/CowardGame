@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
 
     public Rigidbody2D rigidBody;
 
+    public WorldScript worldScript;
     Vector2 movement;
 
     // Update is called once per frame
@@ -30,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("I'll leave now");
             Destroy(gameObject);
+            worldScript.load("MainMenu");
+            
         }
     }
 }

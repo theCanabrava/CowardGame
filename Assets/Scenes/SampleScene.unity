@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rigidBody: {fileID: 239802757}
+  worldScript: {fileID: 1687263433}
 --- !u!50 &239802757
 Rigidbody2D:
   serializedVersion: 4
