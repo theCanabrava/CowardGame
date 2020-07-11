@@ -10,9 +10,13 @@ public class kidMovement : MonoBehaviour
     public float startWaitTime;
     private float rotZ;
     private float rotationTime;
-    private bool Lado = true;
+    public float velociadeLoucura = 8;
+    private bool Lado = false;
+    private bool isMoving = false;
+    private bool assustado = false;
 
-
+    public float startempoSusto = 0;
+    private float tempoSusto;
 
     public Rigidbody2D rB;
 
@@ -25,6 +29,7 @@ public class kidMovement : MonoBehaviour
 
     void Start(){
 
+        tempoSusto = startempoSusto;
         waitTime = startWaitTime;
         rotationTime = waitTime/2;
         randomSpot = 0;
@@ -43,8 +48,9 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {    
-        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole"))
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole") && !collider.name.Equals("ParedeLeft") && !collider.name.Equals("ParedeUp") && !collider.name.Equals("ParedeRight") && !collider.name.Equals("ParedeBotton"))
         {
+
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
 
             float deltaX = rB.position.x - enemyPosition.x;
@@ -65,47 +71,62 @@ public class kidMovement : MonoBehaviour
 
     private void moveFromScare(Vector2 direction)
     {
-        rB.velocity = new Vector2(160*direction.x, 160*direction.y);
+        rB.velocity = new Vector2(230*direction.x, 230*direction.y);
         rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
         randomMovement = false;
+        tempoSusto = startempoSusto;
+        assustado = true;
     }
 
     void Update()
     {
-
-        if(randomMovement)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
-        }
-        
-
-        if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f){
-            if (waitTime <= 0){
-                    if(randomMovement)
-                    {
-                        randomSpot = Random.Range(0, moveSpots.Length);
-
-                        float deltaX = rB.position.x - moveSpots[randomSpot].position.x;
-                        float deltaY = rB.position.y - moveSpots[randomSpot].position.y;
-
-
-                        if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
-                        {
-                            if(deltaX > 0) rotate(new Vector2(1, 0));
-                            else rotate(new Vector2(-1, 0));
-                        }
-                        else
-                        {
-                            if(deltaY > 0) rotate(new Vector2(0, 1));
-                            else rotate(new Vector2(0, -1));
-                        }
-
-                        waitTime = startWaitTime;
-                    }
+                if(randomMovement)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
                 } else {
-                    waitTime -= Time.deltaTime;
-                }
-        }
+               if (tempoSusto <= 0){
+                    randomMovement = true;
+                    assustado = false;
+            } else {
+                 tempoSusto -= Time.deltaTime;
+
+            } 
+            }
+                
+
+                if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f){
+                     isMoving = false;
+                    if (waitTime <= 0){
+                            if(randomMovement)
+                            {
+                               
+                                randomSpot = Random.Range(0, moveSpots.Length);
+
+                                float deltaX = rB.position.x - moveSpots[randomSpot].position.x;
+                                float deltaY = rB.position.y - moveSpots[randomSpot].position.y;
+
+
+                                if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
+                                {
+                                    if(deltaX > 0) rotate(new Vector2(1, 0));
+                                    else rotate(new Vector2(-1, 0));
+                                }
+                                else
+                                {
+                                    if(deltaY > 0) rotate(new Vector2(0, 1));
+                                    else rotate(new Vector2(0, -1));
+                                }
+
+                                waitTime = startWaitTime;
+                            }
+                        } else {
+                            waitTime -= Time.deltaTime;
+
+                        }
+                } else {
+
+                     isMoving = true;
+                }  
     }
 
     private void rotate(Vector2 direction)
@@ -114,23 +135,45 @@ public class kidMovement : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        if(Lado){
-         if (rotationTime >= 0){
-            rotZ += Time.deltaTime * rotationSpeed;
-            rotationTime -= Time.deltaTime;
-            } else {
-                Lado = !Lado;
-            }
-        }else{
-        if (rotationTime >= 0){
-         rotZ += -Time.deltaTime * rotationSpeed;
-            rotationTime -= Time.deltaTime;
-            } else {
-               Lado = !Lado;
-            } 
-         }
-           transform.rotation = Quaternion.Euler(0,0,rotZ);
-    }
+        {
+            if(!assustado){
+                if(!isMoving){
+                    if(Lado){
+                     if (rotationTime >= 0){
+                       rotZ += Time.deltaTime * rotationSpeed;
+                        rotationTime -= Time.deltaTime;
+                       } else {
+                           Lado = !Lado;
+                       }
+                  }else{
+                    if (rotationTime <= startWaitTime){
+                       rotZ += -Time.deltaTime * rotationSpeed;
+                       rotationTime += Time.deltaTime;
+                    } else {
+                       Lado = !Lado;
+                    } 
+                 }
 
+                   transform.rotation = Quaternion.Euler(0,0,rotZ);
+            }
+        }else {
+            if(Lado){
+                     if (rotationTime >= 0){
+                       rotZ += Time.deltaTime * rotationSpeed*velociadeLoucura;
+                        rotationTime -= Time.deltaTime;
+                       } else {
+                           Lado = !Lado;
+                       }
+                  }else{
+                    if (rotationTime <= startWaitTime){
+                       rotZ += -Time.deltaTime * rotationSpeed*velociadeLoucura;
+                       rotationTime += Time.deltaTime;
+                    } else {
+                       Lado = !Lado;
+                    } 
+                 }
+
+                   transform.rotation = Quaternion.Euler(0,0,rotZ);
+            }
+    }
 }
