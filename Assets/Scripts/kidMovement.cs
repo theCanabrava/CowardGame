@@ -22,9 +22,8 @@ public class kidMovement : MonoBehaviour
     }
 
     private void reactToCollision(Collider2D collider)
-    {
-    
-        if(!collider.name.Equals("Hitbox"))
+    {    
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door"))
         {
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
 
@@ -46,8 +45,9 @@ public class kidMovement : MonoBehaviour
 
     private void moveFromScare(Vector2 direction)
     {
+        Debug.Log("Moved");
         rB.velocity = new Vector2(160*direction.x, 160*direction.y);
-        rB.MoveRotation(90*direction.x + 180*direction.y);
+        rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
     }
 
     void Update()
