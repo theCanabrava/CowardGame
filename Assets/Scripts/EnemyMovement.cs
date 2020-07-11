@@ -29,4 +29,8 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("I entered!");
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collider){
+        Debug.Log("OH MY Mother");
+    }
 }

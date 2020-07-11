@@ -8,25 +8,17 @@ public class kidMovement : MonoBehaviour
 
     public Rigidbody2D rB;
 
+    public PolygonCollider2D collider;
+
     Vector2 movement;
 
-    // Update is called once per frame
-
-   // void OnCollisionEnter(Collision corpo)
-   // {	
-
-    	//rB.isKinematic = false;
-
-   // }
-
-   // void OnCollisionExit (Collision corpo) 
-    //{
-    	//rB.isKinematic = true;
-   // }
+    private void OnTriggerEnter2D(Collider2D collider){
+    	Debug.Log("OH MY GOD!");
+    }
 
     void Update()
     {
-      
+      	
 
     }
     void FixedUpdate()
