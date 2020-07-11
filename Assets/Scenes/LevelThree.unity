@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  level: 0
+  level: 3
 --- !u!4 &654590548
 Transform:
   m_ObjectHideFlags: 0
