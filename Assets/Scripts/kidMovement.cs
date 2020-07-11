@@ -65,18 +65,46 @@ public class kidMovement : MonoBehaviour
 
     void Update()
     {
-      	
-        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
+
+        if(randomMovement)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
+        }
+        
 
         if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f){
             if (waitTime <= 0){
-                    randomSpot = Random.Range(0, 3);
-                    if(randomMovement) waitTime = startWaitTime;
+                    if(randomMovement)
+                    {
+                        randomSpot = Random.Range(0, 3);
+
+                        float deltaX = rB.position.x - moveSpots[randomSpot].position.x;
+                        float deltaY = rB.position.y - moveSpots[randomSpot].position.y;
+
+                        if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
+                        {
+                            if(deltaX > 0) rotate(new Vector2(1, 0));
+                            else rotate(new Vector2(-1, 0));
+                        }
+                        else
+                        {
+                            if(deltaY > 0) rotate(new Vector2(0, 1));
+                            else rotate(new Vector2(0, -1));
+                        }
+
+                        waitTime = startWaitTime;
+                    }
                 } else {
                     waitTime -= Time.deltaTime;
                 }
         }
     }
+
+    private void rotate(Vector2 direction)
+    {
+        rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
+    }
+
     void FixedUpdate()
     {
         
