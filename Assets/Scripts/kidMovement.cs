@@ -70,8 +70,8 @@ public class kidMovement : MonoBehaviour
 
         if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f){
             if (waitTime <= 0){
-                    randomSpot = Random.Range(0, 3);
-                    if(randomMovement) waitTime = startWaitTime;
+                    randomSpot = Random.Range(0, moveSpots.Length);
+                    if(randomMovement){waitTime = startWaitTime;}
                 } else {
                     waitTime -= Time.deltaTime;
                 }
