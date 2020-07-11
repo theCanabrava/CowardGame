@@ -9,18 +9,24 @@ public class WorldScript : MonoBehaviour
 
     public void addEnemy(EnemyMovement enemy)
     {
-        Debug.Log("Adding: " + enemy);
         enemies.Add(enemy);
         disableEnemies();
     }
 
     public void disableEnemies()
     {
-        Debug.Log("Reseting control");
         foreach(EnemyMovement enemy in enemies)
         {
-            Debug.Log("Disableing: " + enemy.name);
             enemy.enableFlag = false;
+        }
+    }
+
+    public void dropEnemy(EnemyMovement enemy)
+    {
+        enemies.Remove(enemy);
+        if(enemies.Count == 0)
+        {
+            load("MainMenu");
         }
     }
 

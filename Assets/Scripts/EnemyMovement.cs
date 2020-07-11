@@ -38,11 +38,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if(collider.name.Equals("Hitbox"))
         {
-            Debug.Log("I'll leave now");
+            worldScript.dropEnemy(this);
             Destroy(gameObject);
-            worldScript.load("MainMenu");
-            
         }
+    }
+
+    public void destroySelf()
+    {
+        worldScript.dropEnemy(this);
+        Destroy(gameObject);
     }
 
     private void OnMouseUp() 
