@@ -5,8 +5,14 @@ using UnityEngine;
 public class kidMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float rotationSpeed = 0;
     private float waitTime;
     public float startWaitTime;
+    private float rotZ;
+    private float rotationTime;
+    private bool Lado = true;
+
+
 
     public Rigidbody2D rB;
 
@@ -20,6 +26,7 @@ public class kidMovement : MonoBehaviour
     void Start(){
 
         waitTime = startWaitTime;
+        rotationTime = waitTime/2;
         randomSpot = 0;
     }
 
@@ -81,6 +88,7 @@ public class kidMovement : MonoBehaviour
                         float deltaX = rB.position.x - moveSpots[randomSpot].position.x;
                         float deltaY = rB.position.y - moveSpots[randomSpot].position.y;
 
+
                         if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
                         {
                             if(deltaX > 0) rotate(new Vector2(1, 0));
@@ -107,6 +115,22 @@ public class kidMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        if(Lado){
+         if (rotationTime >= 0){
+            rotZ += Time.deltaTime * rotationSpeed;
+            rotationTime -= Time.deltaTime;
+            } else {
+                Lado = !Lado;
+            }
+        }else{
+        if (rotationTime >= 0){
+         rotZ += -Time.deltaTime * rotationSpeed;
+            rotationTime -= Time.deltaTime;
+            } else {
+               Lado = !Lado;
+            } 
+         }
+           transform.rotation = Quaternion.Euler(0,0,rotZ);
     }
+
 }
