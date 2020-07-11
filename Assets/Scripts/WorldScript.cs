@@ -5,12 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WorldScript : MonoBehaviour
 {
-    public List<EnemyMovement> enemies;
-
-    private void Start()
-    {
-        enemies = new List<EnemyMovement>();
-    }
+    public List<EnemyMovement> enemies = new List<EnemyMovement>();
 
     public void addEnemy(EnemyMovement enemy)
     {
