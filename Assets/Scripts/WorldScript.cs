@@ -43,7 +43,7 @@ public class WorldScript : MonoBehaviour
 
     public void nextLevel()
     {
-        SceneManager.LoadScene((level+1)%2);
+        SceneManager.LoadScene((level+1)%3);
     }
 
 
