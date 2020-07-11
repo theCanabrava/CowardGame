@@ -10,6 +10,8 @@ public class kidMovement : MonoBehaviour
 
     Vector2 movement;
 
+    flag True;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
     	reactToCollision(collider);
@@ -48,6 +50,14 @@ public class kidMovement : MonoBehaviour
         Debug.Log("Moved");
         rB.velocity = new Vector2(160*direction.x, 160*direction.y);
         rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
+    }
+
+    private void initialMovement(){
+
+		Vector2 startPosition
+
+		transform.
+
     }
 
     void Update()
