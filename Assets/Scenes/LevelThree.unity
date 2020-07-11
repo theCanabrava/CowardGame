@@ -270,7 +270,7 @@ PrefabInstance:
     - target: {fileID: 4154506259770870767, guid: 0f87d96080de31a4d87569ac659d9bba,
         type: 3}
       propertyPath: m_Name
-      value: ParedeBotton (1)
+      value: ParedeBotton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f87d96080de31a4d87569ac659d9bba, type: 3}
@@ -354,7 +354,7 @@ PrefabInstance:
     - target: {fileID: 3202202300455871325, guid: 028f27a40936f4e4c942cc56dadc036b,
         type: 3}
       propertyPath: m_Name
-      value: ParedeRight (1)
+      value: ParedeRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 028f27a40936f4e4c942cc56dadc036b, type: 3}
@@ -875,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 3202202300455871325, guid: 028f27a40936f4e4c942cc56dadc036b,
         type: 3}
       propertyPath: m_Name
-      value: ParedeRight (3)
+      value: ParedeRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 028f27a40936f4e4c942cc56dadc036b, type: 3}
@@ -1135,7 +1135,7 @@ PrefabInstance:
     - target: {fileID: 3202202300455871325, guid: 028f27a40936f4e4c942cc56dadc036b,
         type: 3}
       propertyPath: m_Name
-      value: ParedeRight (2)
+      value: ParedeRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 028f27a40936f4e4c942cc56dadc036b, type: 3}
