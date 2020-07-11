@@ -15,7 +15,7 @@ public class kidMovement : MonoBehaviour
 
     Vector2 movement;
 
-   // bool flag = true;
+    bool randomMovement = true;
 
     void Start(){
 
@@ -58,9 +58,9 @@ public class kidMovement : MonoBehaviour
 
     private void moveFromScare(Vector2 direction)
     {
-        Debug.Log("Moved");
         rB.velocity = new Vector2(160*direction.x, 160*direction.y);
         rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
+        randomMovement = false;
     }
 
     void Update()
@@ -71,7 +71,7 @@ public class kidMovement : MonoBehaviour
         if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f){
             if (waitTime <= 0){
                     randomSpot = Random.Range(0, 3);
-                    waitTime = startWaitTime;
+                    if(randomMovement) waitTime = startWaitTime;
                 } else {
                     waitTime -= Time.deltaTime;
                 }
