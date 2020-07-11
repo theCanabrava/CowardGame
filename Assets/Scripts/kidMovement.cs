@@ -31,14 +31,20 @@ public class kidMovement : MonoBehaviour
 
         if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
         {
-            if(deltaX > 0)  Debug.Log("I should go right");
-            else Debug.Log("I should go left");
+            if(deltaX > 0) moveFromScare(new Vector2(1, 0));
+            else moveFromScare(new Vector2(-1, 0));
         }
         else
         {
-            if(deltaY > 0)  Debug.Log("I should go up");
-            else Debug.Log("I should go down");
+            if(deltaY > 0) moveFromScare(new Vector2(0, 1));
+            else moveFromScare(new Vector2(0, -1));
         }
+    }
+
+    private void moveFromScare(Vector2 direction)
+    {
+        rB.velocity = new Vector2(160*direction.x, 160*direction.y);
+        rB.MoveRotation(90*direction.x + 180*direction.y);
     }
 
     void Update()

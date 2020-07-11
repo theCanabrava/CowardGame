@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
     }
+    
     void FixedUpdate()
     {
         rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
