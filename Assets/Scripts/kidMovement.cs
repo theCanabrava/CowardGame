@@ -76,7 +76,7 @@ public class kidMovement : MonoBehaviour
             if (waitTime <= 0){
                     if(randomMovement)
                     {
-                        randomSpot = Random.Range(0, 3);
+                        randomSpot = Random.Range(0, moveSpots.Length);
 
                         float deltaX = rB.position.x - moveSpots[randomSpot].position.x;
                         float deltaY = rB.position.y - moveSpots[randomSpot].position.y;
