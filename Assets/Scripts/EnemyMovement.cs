@@ -22,4 +22,11 @@ public class EnemyMovement : MonoBehaviour
     {
         rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
+
+    void OnCollisionEnter(Collision other) 
+    {
+
+        Debug.Log("I entered!");
+        
+    }
 }
