@@ -12,7 +12,7 @@ public class SpikeBehaviour : MonoBehaviour
         {
             worldScript.load("MainMenu");
         }
-        else if(collider.name.Equals("Enemy"))
+        else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy"))
         {
             EnemyMovement enemy = collider.transform.gameObject.GetComponent<EnemyMovement>();
             enemy.destroySelf();

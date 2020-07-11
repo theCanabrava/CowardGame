@@ -12,13 +12,14 @@ public class HoleBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log("Hey");
         if(holeActive)
         {
             if(collider.name.Equals("Player"))
             {
                 worldScript.load("MainMenu");
             }
-            else if(collider.name.Equals("Enemy"))
+            else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy"))
             {
                 EnemyMovement enemy = collider.transform.gameObject.GetComponent<EnemyMovement>();
                 enemy.destroySelf();
@@ -26,12 +27,36 @@ public class HoleBehaviour : MonoBehaviour
         }
         else
         {
+            Debug.Log("Sup");
             within.Add(collider);
+            StartCoroutine(ExampleCoroutine());
         }
-        /*
-        
-        */
+    }
 
+    IEnumerator ExampleCoroutine()
+    {
+        Debug.Log("Started timeout");
+        timoutStarted = true;
+        yield return new WaitForSeconds(1);
+        Debug.Log("Timed out");
+        holeActive = true;
+        destroyOnList();
+    }
+
+    private void destroyOnList()
+    {
+        foreach(Collider2D collider in within)
+        {
+            if(collider.name.Equals("Player"))
+            {
+                worldScript.load("MainMenu");
+            }
+            else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy"))
+            {
+                EnemyMovement enemy = collider.transform.gameObject.GetComponent<EnemyMovement>();
+                enemy.destroySelf();
+            }   
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider) 
