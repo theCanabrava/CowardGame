@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class WorldScript : MonoBehaviour
 {
     public List<EnemyMovement> enemies = new List<EnemyMovement>();
+    public int level;
 
     public void addEnemy(EnemyMovement enemy)
     {
@@ -39,4 +40,11 @@ public class WorldScript : MonoBehaviour
     {
         SceneManager.LoadScene(level);
     }
+
+    public void nextLevel()
+    {
+        SceneManager.LoadScene((level+1)%2);
+    }
+
+
 }
