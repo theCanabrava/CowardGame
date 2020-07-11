@@ -23,21 +23,24 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {
-        Debug.Log("OH MY GOD!");
-        Vector2 enemyPosition = collider.transform.gameObject.transform.position;
-
-        float deltaX = rB.position.x - enemyPosition.x;
-        float deltaY = rB.position.y - enemyPosition.y;
-
-        if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
+    
+        if(!collider.name.Equals("Hitbox"))
         {
-            if(deltaX > 0) moveFromScare(new Vector2(1, 0));
-            else moveFromScare(new Vector2(-1, 0));
-        }
-        else
-        {
-            if(deltaY > 0) moveFromScare(new Vector2(0, 1));
-            else moveFromScare(new Vector2(0, -1));
+            Vector2 enemyPosition = collider.transform.gameObject.transform.position;
+
+            float deltaX = rB.position.x - enemyPosition.x;
+            float deltaY = rB.position.y - enemyPosition.y;
+
+            if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
+            {
+                if(deltaX > 0) moveFromScare(new Vector2(1, 0));
+                else moveFromScare(new Vector2(-1, 0));
+            }
+            else
+            {
+                if(deltaY > 0) moveFromScare(new Vector2(0, 1));
+                else moveFromScare(new Vector2(0, -1));
+            }
         }
     }
 

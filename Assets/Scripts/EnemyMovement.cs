@@ -18,20 +18,18 @@ public class EnemyMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
     }
-    
+
     void FixedUpdate()
     {
         rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void OnCollisionEnter(Collision other) 
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-
-        Debug.Log("I entered!");
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider){
-        Debug.Log("OH MY Mother");
+        if(collider.name.Equals("Hitbox"))
+        {
+            Debug.Log("I'll leave now");
+            Destroy(gameObject);
+        }
     }
 }
