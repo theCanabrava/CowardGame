@@ -1,16 +1,27 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class kidMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    private float waitTime;
+    public float startWaitTime;
 
     public Rigidbody2D rB;
 
+    public Transform[ ] moveSpots;
+    private int randomSpot;
+
     Vector2 movement;
 
-    bool flag = true;
+   // bool flag = true;
+
+    void Start(){
+
+        waitTime = startWaitTime;
+        randomSpot = 0;
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -25,7 +36,7 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {    
-        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door"))
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole"))
         {
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
 
@@ -52,18 +63,19 @@ public class kidMovement : MonoBehaviour
         rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
     }
 
-    private void initialMovement(){
-
-		/*Vector2 startPosition
-
-		transform.*/
-
-    }
-
     void Update()
     {
       	
+        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
 
+        if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f){
+            if (waitTime <= 0){
+                    randomSpot = Random.Range(0, 3);
+                    waitTime = startWaitTime;
+                } else {
+                    waitTime -= Time.deltaTime;
+                }
+        }
     }
     void FixedUpdate()
     {
