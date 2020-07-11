@@ -115,6 +115,7 @@ public class kidMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
         if(Lado){
          if (rotationTime >= 0){
             rotZ += Time.deltaTime * rotationSpeed;
@@ -130,7 +131,7 @@ public class kidMovement : MonoBehaviour
                Lado = !Lado;
             } 
          }
-           transform.rotation = Quaternion.Euler(0,0,rotZ);
+           transform.rotation = Quaternion.Euler(0,0,rotZ);*/
     }
 
 }
