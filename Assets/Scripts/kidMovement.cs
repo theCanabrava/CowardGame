@@ -28,6 +28,8 @@ public class kidMovement : MonoBehaviour
 
     bool randomMovement = true;
 
+    bool canaUglyFlag = true;
+
     void Start(){
 
         tempoSusto = startempoSusto;
@@ -75,15 +77,17 @@ public class kidMovement : MonoBehaviour
     {
         rB.velocity = new Vector2(230*direction.x, 230*direction.y);
         rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
-       
-        float i = 0;
-        while(i < 2){
-            i += Time.deltaTime;
-        }
-
         randomMovement = false;
         tempoSusto = startempoSusto;
         assustado = true;
+        canaUglyFlag = false;
+        StartCoroutine(ExampleCoroutine());
+    }
+
+    IEnumerator ExampleCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canaUglyFlag = true;
     }
 
     void Update()
@@ -144,7 +148,9 @@ public class kidMovement : MonoBehaviour
 
     void FixedUpdate()
         {
-            if(!assustado){
+            if(canaUglyFlag)
+            {
+                 if(!assustado){
                 if(!isMoving){
                     if(Lado){
                      if (rotationTime >= 0){
@@ -182,6 +188,7 @@ public class kidMovement : MonoBehaviour
                  }
 
                    transform.rotation = Quaternion.Euler(0,0,rotZ);
+            }
             }
     }
 }
