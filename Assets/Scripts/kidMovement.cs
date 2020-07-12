@@ -51,7 +51,7 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {    
-        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole") && !collider.name.Equals("ParedeBotton") && !collider.name.Equals("ParedeUp") && !collider.name.Equals("ParedeLeft") && !collider.name.Equals("ParedeRight") && !collider.name.Equals("Spike") )
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole") && !collider.name.Equals("ParedeBotton") && !collider.name.Equals("ParedeUp") && !collider.name.Equals("ParedeLeft") && !collider.name.Equals("ParedeRight") && !collider.name.Equals("Spike")  )
         {
 
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
