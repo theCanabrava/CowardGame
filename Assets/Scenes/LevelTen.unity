@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  level: 6
+  level: 10
 --- !u!4 &1803622165
 Transform:
   m_ObjectHideFlags: 0
