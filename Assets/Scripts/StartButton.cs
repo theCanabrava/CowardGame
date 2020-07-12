@@ -9,7 +9,7 @@ public class StartButton : MonoBehaviour
     private void OnMouseUp() 
     {
         
-        worldScript.nextLevel();
+        worldScript.startGame();
 
     }
 }
