@@ -10,7 +10,10 @@ public class SpikeBehaviour : MonoBehaviour
     {
         if(collider.name.Equals("Player"))
         {
-            worldScript.load("MainMenu");
+            if(collider.GetType() == typeof(BoxCollider2D))
+            {
+                worldScript.load("MainMenu");
+            }
         }
         else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy"))
         {

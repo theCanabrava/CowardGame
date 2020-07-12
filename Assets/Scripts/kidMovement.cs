@@ -57,6 +57,9 @@ public class kidMovement : MonoBehaviour
             float deltaX = rB.position.x - enemyPosition.x;
             float deltaY = rB.position.y - enemyPosition.y;
 
+            if(collider.name.Equals("ParedeLeft") || collider.name.Equals("ParedeRight") ) deltaY = 0;
+            if(collider.name.Equals("ParedeUp") || collider.name.Equals("ParedeDown")) deltaX = 0;
+
             if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
             {
                 if(deltaX > 0) moveFromScare(new Vector2(1, 0));
