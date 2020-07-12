@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  level: 0
+  level: 11
 --- !u!4 &470518454
 Transform:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4270fb6c3eba9a1fe9f34aaab02c3e32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3654f760df48cb26d92578a0f3882cd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

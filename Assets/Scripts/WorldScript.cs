@@ -18,6 +18,7 @@ public class WorldScript : MonoBehaviour
         }
         else savedLevel = 1; 
         if(savedLevel == 0) savedLevel = 1;
+        else if(savedLevel == 11) savedLevel = 1;
         Debug.Log(savedLevel);
     }
 
@@ -61,9 +62,9 @@ public class WorldScript : MonoBehaviour
 
     public void nextLevel()
     {
-        PlayerPrefs.SetInt("SavedLevel", (level+1)%11);
+        PlayerPrefs.SetInt("SavedLevel", (level+1)%12);
 	    PlayerPrefs.Save();
-        SceneManager.LoadScene((level+1)%11);
+        SceneManager.LoadScene((level+1)%12);
     }
 
 
