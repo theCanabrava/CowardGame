@@ -11,6 +11,7 @@ public class kidMovement : MonoBehaviour
     private float rotZ;
     private float rotationTime;
     public float velociadeLoucura = 8;
+    public float loucuraTimer = 2;
     private bool Lado = false;
     private bool isMoving = false;
     private bool assustado = false;
@@ -48,7 +49,7 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {    
-        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole") && !collider.name.Equals("ParedeLeft") && !collider.name.Equals("ParedeUp") && !collider.name.Equals("ParedeRight") && !collider.name.Equals("ParedeBotton"))
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole"))
         {
 
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
@@ -165,7 +166,7 @@ public class kidMovement : MonoBehaviour
                            Lado = !Lado;
                        }
                   }else{
-                    if (rotationTime <= startWaitTime){
+                    if (rotationTime <= loucuraTimer){
                        rotZ += -Time.deltaTime * rotationSpeed*velociadeLoucura;
                        rotationTime += Time.deltaTime;
                     } else {
