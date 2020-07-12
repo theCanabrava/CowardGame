@@ -48,13 +48,16 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {    
-        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole") && !collider.name.Equals("ParedeLeft") && !collider.name.Equals("ParedeUp") && !collider.name.Equals("ParedeRight") && !collider.name.Equals("ParedeBotton"))
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole"))
         {
 
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
 
             float deltaX = rB.position.x - enemyPosition.x;
             float deltaY = rB.position.y - enemyPosition.y;
+
+            if(collider.name.Equals("ParedeLeft") || collider.name.Equals("ParedeRight") ) deltaY = 0;
+            if(collider.name.Equals("ParedeUp") || collider.name.Equals("ParedeDown")) deltaX = 0;
 
             if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
             {
