@@ -49,7 +49,7 @@ public class kidMovement : MonoBehaviour
 
     private void reactToCollision(Collider2D collider)
     {    
-        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole"))
+        if(!collider.name.Equals("Hitbox") && !collider.name.Equals("Door") && !collider.name.Equals("Hole") && !collider.name.Equals("ParedeBotton") && !collider.name.Equals("ParedeUp") && !collider.name.Equals("ParedeLeft") && !collider.name.Equals("ParedeRight"))
         {
 
             Vector2 enemyPosition = collider.transform.gameObject.transform.position;
@@ -57,8 +57,6 @@ public class kidMovement : MonoBehaviour
             float deltaX = rB.position.x - enemyPosition.x;
             float deltaY = rB.position.y - enemyPosition.y;
 
-            if(collider.name.Equals("ParedeLeft") || collider.name.Equals("ParedeRight") ) deltaY = 0;
-            if(collider.name.Equals("ParedeUp") || collider.name.Equals("ParedeDown")) deltaX = 0;
 
             if(Mathf.Abs(deltaX) >= Mathf.Abs(deltaY))
             {
@@ -77,6 +75,12 @@ public class kidMovement : MonoBehaviour
     {
         rB.velocity = new Vector2(230*direction.x, 230*direction.y);
         rB.MoveRotation(90*direction.x + (90 + 90*direction.y)*direction.y);
+       
+        float i = 0;
+        while(i < 2){
+            i += Time.deltaTime;
+        }
+
         randomMovement = false;
         tempoSusto = startempoSusto;
         assustado = true;
