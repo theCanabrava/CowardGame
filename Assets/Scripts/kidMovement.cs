@@ -28,7 +28,7 @@ public class kidMovement : MonoBehaviour
 
     bool randomMovement = true;
 
-    bool canaUglyFlag = true;
+    int canaUglyFlag = 0;
 
     void Start(){
 
@@ -80,14 +80,14 @@ public class kidMovement : MonoBehaviour
         randomMovement = false;
         tempoSusto = startempoSusto;
         assustado = true;
-        canaUglyFlag = false;
+        canaUglyFlag++;
         StartCoroutine(ExampleCoroutine());
     }
 
     IEnumerator ExampleCoroutine()
     {
         yield return new WaitForSeconds(0.5f);
-        canaUglyFlag = true;
+        canaUglyFlag--;
     }
 
     void Update()
@@ -148,7 +148,7 @@ public class kidMovement : MonoBehaviour
 
     void FixedUpdate()
         {
-            if(canaUglyFlag)
+            if(canaUglyFlag == 0)
             {
                  if(!assustado){
                 if(!isMoving){
