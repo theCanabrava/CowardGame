@@ -37,7 +37,7 @@ public class HoleBehaviour : MonoBehaviour
     {
         Debug.Log("Started timeout");
         timoutStarted = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Debug.Log("Timed out");
         holeActive = true;
         destroyOnList();
