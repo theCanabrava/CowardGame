@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  level: 0
+  level: 1
 --- !u!1001 &3202202299643924334
 PrefabInstance:
   m_ObjectHideFlags: 0
