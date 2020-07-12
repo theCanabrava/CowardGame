@@ -2450,6 +2450,16 @@ PrefabInstance:
       propertyPath: worldScript
       value: 
       objectReference: {fileID: 654590547}
+    - target: {fileID: 7836239994382783364, guid: 76c0d5057986ede4386ef5be96648828,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1984732095
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836239994382783364, guid: 76c0d5057986ede4386ef5be96648828,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7836239994382783365, guid: 76c0d5057986ede4386ef5be96648828,
         type: 3}
       propertyPath: m_LocalPosition.x
