@@ -595,7 +595,7 @@ PrefabInstance:
     - target: {fileID: 5730966528010891239, guid: b3108abb5c6a6bcc6822c31782b5a11d,
         type: 3}
       propertyPath: m_Name
-      value: Spike (1)
+      value: Spike
       objectReference: {fileID: 0}
     - target: {fileID: 5730966528010891256, guid: b3108abb5c6a6bcc6822c31782b5a11d,
         type: 3}
