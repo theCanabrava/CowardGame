@@ -92,13 +92,13 @@ public class kidMovement : MonoBehaviour
 
     void Update()
     {
-                if(randomMovement)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
-                } else {
-               if (tempoSusto <= 0){
-                    randomMovement = true;
-                    assustado = false;
+            if(randomMovement)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, moveSpeed * Time.deltaTime);
+            } else {
+            if (tempoSusto <= 0){
+                randomMovement = true;
+                assustado = false;
             } else {
                  tempoSusto -= Time.deltaTime;
 
