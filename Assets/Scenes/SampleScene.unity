@@ -865,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 5011828405578377222, guid: 6f35ad93b838d5b44ba2e85f1b1d0fcb,
         type: 3}
       propertyPath: startWaitTime
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5011828405578377222, guid: 6f35ad93b838d5b44ba2e85f1b1d0fcb,
         type: 3}
@@ -915,12 +915,12 @@ PrefabInstance:
     - target: {fileID: 5011828405578377222, guid: 6f35ad93b838d5b44ba2e85f1b1d0fcb,
         type: 3}
       propertyPath: startempoSusto
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5011828405578377222, guid: 6f35ad93b838d5b44ba2e85f1b1d0fcb,
         type: 3}
       propertyPath: velociadeLoucura
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5011828405578377223, guid: 6f35ad93b838d5b44ba2e85f1b1d0fcb,
         type: 3}

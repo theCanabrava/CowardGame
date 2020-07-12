@@ -98,8 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c8a3555c8ad0045a8129bdbcc2a238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 4.57
+  rotationSpeed: 10
+  startWaitTime: 12
+  velociadeLoucura: 10
+  loucuraTimer: 2
+  startempoSusto: 15
   rB: {fileID: 5011828405578377339}
+  moveSpots: []
 --- !u!50 &5011828405578377339
 Rigidbody2D:
   serializedVersion: 4
