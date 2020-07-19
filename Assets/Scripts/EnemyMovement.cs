@@ -36,11 +36,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.name.Equals("Hitbox"))
-        {
-            worldScript.dropEnemy(this);
-            Destroy(gameObject);
-        }
+        if(collider.name.Equals("Hitbox")) destroySelf();
     }
 
     public void destroySelf()
@@ -51,9 +47,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnMouseUp() 
     {
-        Debug.Log("I want control");
         worldScript.disableEnemies();
         enableFlag = true;
-
     }
 }
