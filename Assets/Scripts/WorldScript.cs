@@ -39,16 +39,9 @@ public class WorldScript : MonoBehaviour
     public void dropEnemy(EnemyMovement enemy)
     {
         enemies.Remove(enemy);
-        if(enemies.Count == 0)
-        {
-            load("MainMenu");
-        }
+        if(enemies.Count == 0) gameOver();
     }
 
-    public void ping()
-    {
-        Debug.Log("My children are calling me!");
-    }
 
     public void load(string level)
     {
@@ -65,6 +58,11 @@ public class WorldScript : MonoBehaviour
         PlayerPrefs.SetInt("SavedLevel", (level+1)%12);
 	    PlayerPrefs.Save();
         SceneManager.LoadScene((level+1)%12);
+    }
+
+    public void gameOver()
+    {
+        load("MainMenu");
     }
 
 

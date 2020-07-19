@@ -9,7 +9,7 @@ A fazer:
     - Fazer tilemaps de espinho e parede.
 
 Em processo:
-    - Refatoração de código - HoleBehaviour (CANA) , Kid movement, World Script.
+    - Refatoração de código - Kid movement (CANA), World Script.
 
 Realizado:
-    - Refatoração de código - Enemy movement
+    - Refatoração de código - Enemy movement, Hole behviour

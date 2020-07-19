@@ -12,51 +12,43 @@ public class HoleBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Hey");
-        if(holeActive)
-        {
-            if(collider.name.Equals("Player"))
-            {
-                worldScript.load("MainMenu");
-            }
-            else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy"))
-            {
-                EnemyMovement enemy = collider.transform.gameObject.GetComponent<EnemyMovement>();
-                enemy.destroySelf();
-            }    
-        }
-        else
-        {
-            Debug.Log("Sup");
-            within.Add(collider);
-            StartCoroutine(ExampleCoroutine());
-        }
+        if(holeActive) throwOnHole(collider);
+        else putOnTrap(collider);
     }
 
-    IEnumerator ExampleCoroutine()
+    private putOnTrap(Collider2D collider)
     {
-        Debug.Log("Started timeout");
-        timoutStarted = true;
-        yield return new WaitForSeconds(2);
-        Debug.Log("Timed out");
-        holeActive = true;
-        destroyOnList();
+        within.Add(collider);
+        StartCoroutine(TrapCountdown());
+    }
+
+    private void throwOnHole(Collider2D collider)
+    {
+        if(collider.name.Equals("Player")) worldScript.gameOver();
+        else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy")) destroyEnemy(collider);
+    }
+
+    private void destroyEnemy(Collider2D collider)
+    {
+        EnemyMovement enemy = collider.transform.gameObject.GetComponent<EnemyMovement>();
+        enemy.destroySelf();
+    }
+
+
+    IEnumerator TrapCountdown()
+    {
+        if(!timoutStarted)
+        {
+            timoutStarted = true;
+            yield return new WaitForSeconds(2);
+            holeActive = true;
+            destroyOnList();
+        }
     }
 
     private void destroyOnList()
     {
-        foreach(Collider2D collider in within)
-        {
-            if(collider.name.Equals("Player"))
-            {
-                worldScript.load("MainMenu");
-            }
-            else if(collider.name.Equals("Enemy") || collider.name.Equals("StoneEnemy"))
-            {
-                EnemyMovement enemy = collider.transform.gameObject.GetComponent<EnemyMovement>();
-                enemy.destroySelf();
-            }   
-        }
+        foreach(Collider2D collider in within) throwOnHole(collider);
     }
 
     private void OnTriggerExit2D(Collider2D collider) 
