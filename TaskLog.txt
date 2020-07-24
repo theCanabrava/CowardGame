@@ -7,9 +7,10 @@ A fazer:
     - Incluir sprites de enino olhando para frente e para os lados.
     - Incluir animação de sprites.
     - Fazer tilemaps de espinho e parede.
+    - Testar kid movement.
 
 Em processo:
-    - Refatoração de código - Kid movement (CANA), World Script.
+    - Refatoração de código - World Script (CANA).
 
 Realizado:
-    - Refatoração de código - Enemy movement, Hole behviour
+    - Refatoração de código - Enemy movement, Hole behviour, Kid movement (CANA)
